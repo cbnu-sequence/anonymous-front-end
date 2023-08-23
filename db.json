@@ -1,0 +1,28 @@
+{
+  "maching-posts": [
+    {
+      "id": 0,
+      "title": "타이틀",
+      "introduce": "json-server 공부하기",
+      "appeal": "어필입니다.ㅇ"
+    },
+    {
+      "title": "아녕",
+      "introduce": "아나ㅓㅇ",
+      "appeal": "아ㅓ로",
+      "id": 1
+    },
+    {
+      "title": "`",
+      "introduce": "1",
+      "appeal": "1",
+      "id": 2
+    },
+    {
+      "title": "gk",
+      "introduce": "gk",
+      "appeal": "gk",
+      "id": 3
+    }
+  ]
+}
