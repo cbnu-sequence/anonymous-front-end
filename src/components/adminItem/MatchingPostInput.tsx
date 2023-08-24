@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { postMachingPost } from '../apis/MachingPostApis';
+import { postMatchingPost } from '../../apis/MatchingPostApis';
 
-const MatchingPost = () => {
+const MatchingPostInput = () => {
   const [title, setTitle] = useState('');
   const [introduce, setIntroduce] = useState('');
   const [appeal, setAppeal] = useState('');
 
   const handleSubmit = async () => {
-    postMachingPost(title, introduce, appeal);
+    postMatchingPost(title, introduce, appeal);
     setTitle('');
     setIntroduce('');
     setAppeal('');
@@ -38,4 +38,4 @@ const MatchingPost = () => {
     </>
   );
 };
-export default MatchingPost;
+export default MatchingPostInput;

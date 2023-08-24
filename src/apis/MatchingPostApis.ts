@@ -7,20 +7,23 @@ export const API: AxiosInstance = axios.create({
   },
 });
 
-export interface MachingPosts {
+export interface MatchingPost {
   id: number;
   title: string;
   introduce: string;
   appeal: string;
+  status: 'RECRUIT' | 'ADMIN';
+  createdAt: string;
+  updateAt: string;
 }
 
 //매칭 포스트 생성 post
-export const postMachingPost = async (
+export const postMatchingPost = async (
   title: string,
   introduce: string,
   appeal: string,
 ) => {
-  const { data } = await API.post(`/maching-posts`, {
+  const { data } = await API.post(`/matching-posts`, {
     title,
     introduce,
     appeal,
@@ -29,16 +32,22 @@ export const postMachingPost = async (
 };
 
 //모든 매칭 포스트 조회 get
-//const getMachingPostAll
+export const getMatchingPostAll = async () => {
+  const res = await API.get(`/matching-posts`);
+  return res.data;
+};
 
 //단건 매칭 포스트 조회 get
-//const getMachingPostOne
+export const getMatchingPostOne = async (id: number) => {
+  const res = await API.get<MatchingPost>(`/matching-posts/${id}`);
+  return res.data;
+};
 
 //매칭 포스트 수정 patch
-//const PatchMachingPost
+//const PatchMatchingPost
 
 //매칭 포스트 삭제 delete
-//const deleteMachingPost
+//const deleteMatchingPost
 
 //특정 유저 초대 post
 //const PostInvitations
