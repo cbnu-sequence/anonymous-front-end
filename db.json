@@ -1,0 +1,31 @@
+{
+  "matching-posts": [
+    {
+      "id": 1,
+      "title": "1title",
+      "introduce": "Some Introduce",
+      "appeal": "Some Appeal",
+      "status": "RECRUIT",
+      "createdAt": "2023-08-23 18:42:07.886633",
+      "updatedAt": "2023-08-23 20:42:07.886633"
+    },
+    {
+      "id": 2,
+      "title": "2title",
+      "introduce": "Some Introduce",
+      "appeal": "Some Appeal",
+      "status": "RECRUIT",
+      "createdAt": "2023-08-23 18:42:07.886633",
+      "updatedAt": "2023-08-23 20:42:07.886633"
+    },
+    {
+      "id": 3,
+      "title": "3title",
+      "introduce": "Some Introduce",
+      "appeal": "Some Appeal",
+      "status": "RECRUIT",
+      "createdAt": "2023-08-23 18:42:07.886633",
+      "updatedAt": "2023-08-23 20:42:07.886633"
+    }
+  ]
+}
