@@ -17,7 +17,7 @@ export interface MatchingPost {
   updateAt: string;
 }
 
-//매칭 포스트 생성 post
+// 매칭 포스트 생성 post
 export const postMatchingPost = async (
   title: string,
   introduce: string,
@@ -31,19 +31,19 @@ export const postMatchingPost = async (
   alert(data.title + ' 추가');
 };
 
-//모든 매칭 포스트 조회 get
+// 모든 매칭 포스트 조회 get
 export const getMatchingPostAll = async () => {
   const res = await API.get(`/matching-posts`);
   return res.data;
 };
 
-//단건 매칭 포스트 조회 get
+// 단건 매칭 포스트 조회 get
 export const getMatchingPostOne = async (id: number) => {
   const res = await API.get<MatchingPost>(`/matching-posts/${id}`);
   return res.data;
 };
 
-//매칭 포스트 수정 patch
+// 매칭 포스트 수정 patch
 export const PatchMatchingPost = async (
   title: string,
   introduce: string,
@@ -57,14 +57,14 @@ export const PatchMatchingPost = async (
   alert(data.title + ' 수정');
 };
 
-//매칭 포스트 삭제 delete
+// 매칭 포스트 삭제 delete
 export const deleteMatchingPost = async (id: number) => {
   const { data } = await API.delete(`/matching-posts/${id}`);
-  //alert(data.title + ' 삭제');
-  //백엔드 response 확인 필요
+  // alert(data.title + ' 삭제');
+  // 백엔드 response 확인 필요
 };
 
-//특정 유저 초대 post
+// 특정 유저 초대 post
 export const PostInvitations = async (postId: string, userId: string) => {
   const { data } = await API.post(
     `/matching-posts/${postId}/users/${userId}/invitations`,

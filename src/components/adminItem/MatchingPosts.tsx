@@ -21,7 +21,7 @@ const MatchingPosts = () => {
     if (data) {
       setPost([data]);
     }
-  }; //단건 조회
+  }; // 단건 조회
 
   return (
     <>

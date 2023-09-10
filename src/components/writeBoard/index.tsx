@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Block, Editor, Select, Title, Appeal } from './AppStyles';
+import { Block, Editor, Select, Title, Appeal } from './styles';
 
 export const WriteBoard = () => {
   const [isChecked, setIsChecked] = useState(false);
