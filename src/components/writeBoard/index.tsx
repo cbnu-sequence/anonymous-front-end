@@ -1,39 +1,41 @@
 import React, { useState } from 'react';
-import { Block, Editor, Select, Title, Appeal } from './styles';
+import {
+  WriteBoardBlock,
+  Editor,
+  Friends,
+  Input,
+  Title,
+  Appeal,
+} from './styles';
 
 export const WriteBoard = () => {
   const [isChecked, setIsChecked] = useState(false);
 
-  const handleChecked = () => {
-    document.getElementById('checkIcon').src = '/checkIcon_checked.png';
+  const handleClick = () => {
+    setIsChecked(!isChecked);
   };
 
   return (
-    <Block>
+    <WriteBoardBlock>
       <Title>
         <img src="/xButton.png" />
         <label className="writeBoardMent">새 게시글 작성</label>
-        <img src="/createButton.png" />
+        <button>Create</button>
       </Title>
 
-      <Select>
-        <option value="university">충북대학교</option>
-        <option value="university">서울대학교</option>
-        <option value="university">연세대학교</option>
-        <option value="university">한양대학교</option>
-      </Select>
-      <Select>
-        <option value="department">정보통신공학부</option>
-        <option value="department">수학과</option>
-        <option value="department">국어국문학과</option>
-        <option value="department">심리학과</option>
-      </Select>
-      <Select>
-        <option value="gender">여자</option>
-        <option value="gender">남자</option>
-      </Select>
+      <Input type="text" name="university" value="충북대학교" disabled />
+      <Input type="text" name="department" value="정보통신공학부" disabled />
+      <Input type="text" name="class-of" value="20학번" disabled />
+      <Input type="text" name="gender" value="여자" disabled />
 
       <Editor>
+        <Friends className="friends">
+          <label>친구</label>
+          <div id="friends-list">
+            <div></div>
+            <button>+</button>
+          </div>
+        </Friends>
         <div className="content">
           <label>제목</label>
           <input type="text" />
@@ -82,9 +84,11 @@ export const WriteBoard = () => {
           <input className="appealContent" type="text" />
           <input className="appealCkeck" type="checkbox" />
           <img
-            src="/checkIcon_unChecked.png"
+            src={
+              isChecked ? '/checkIcon_checked.png' : '/checkIcon_unChecked.png'
+            }
             id="checkIcon"
-            onClick={handleChecked}
+            onClick={handleClick}
           ></img>
         </div>
       </Appeal>
@@ -101,7 +105,7 @@ export const WriteBoard = () => {
         >
           완료 목록
         </button> */}
-    </Block>
+    </WriteBoardBlock>
   );
 };
 

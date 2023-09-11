@@ -1,8 +1,10 @@
-import { CharacterCounter } from '../components/CharacterCounter';
-import MatchingPostInput from '../components/adminItem/MatchingPostInput';
-import MatchingPosts from '../components/adminItem/MatchingPosts';
+import WriteBoard from '../components/writeBoard';
 
 const DirectMatching = () => {
-  return <>directmatching page</>;
+  return (
+    <>
+      <WriteBoard />
+    </>
+  );
 };
 export default DirectMatching;

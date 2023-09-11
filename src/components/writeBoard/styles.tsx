@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 
-export const Block = styled.div`
+export const WriteBoardBlock = styled.div`
+  width: 300px;
+  button {
+    background-color: white;
+    padding: 0;
+  }
   img {
     height: 33px;
   }
@@ -37,21 +42,38 @@ export const Title = styled.div`
     margin-right: 70px;
     font-size: large;
   }
+  button {
+    color: #74e28c;
+    font-weight: 600;
+    font-size: 18px;
+  }
 `;
 
-export const Select = styled.select`
-  display: block;
-  width: 310px;
-  height: 52px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  background-color: #fbfbfb;
-  appearance: none;
-  font-size: large;
-  padding-left: 25px;
-  margin: 12px 0px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+export const Input = styled.input`
+  width: 100%;
+  height: 33px;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  background-color: #f4f4f4;
+  border-radius: 7px;
+  color: #584744;
+`;
+export const Friends = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0px;
+
+  #friends-list {
+    padding: 0 5px;
+    width: 216px;
+    background-color: #fbfbfb;
+    display: flex;
+    justify-content: space-between;
+  }
+  button {
+    font-size: 20px;
+    color: #584744;
+  }
 `;
 
 export const Editor = styled.div`
