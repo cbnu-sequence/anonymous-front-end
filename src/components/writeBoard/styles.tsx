@@ -2,25 +2,23 @@ import styled from '@emotion/styled';
 
 export const WriteBoardBlock = styled.div`
   width: 300px;
+  background-color: white;
+  padding: 40px;
+  color: #584744;
   button {
     background-color: white;
     padding: 0;
   }
   img {
-    height: 33px;
+    height: 27px;
   }
   label {
     font-weight: bold;
   }
   input[type='text'] {
-    background-color: #fbfbfb;
-    border: none;
+    border: 1px solid #f4f4f4;
     outline: none;
   }
-  background-color: white;
-  padding: 40px;
-  color: #584744;
-
   .ListBtn {
     width: 30px;
     height: 30px;
@@ -50,28 +48,31 @@ export const Title = styled.div`
 `;
 
 export const Input = styled.input`
-  width: 100%;
-  height: 33px;
+  width: 90%;
   margin-bottom: 10px;
   padding: 0 10px;
-  background-color: #f4f4f4;
+  height: 33px;
+  background-color: #fbfbfb;
   border-radius: 7px;
   color: #584744;
 `;
 export const Friends = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 4px 0px;
 
   #friends-list {
     padding: 0 5px;
-    width: 216px;
-    background-color: #fbfbfb;
+    width: 80%;
+    height: 34px;
+    border: 1px solid #f4f4f4;
     display: flex;
     justify-content: space-between;
+    border-radius: 5px;
   }
   button {
-    font-size: 20px;
+    font-size: 27px;
     color: #584744;
   }
 `;
@@ -79,25 +80,54 @@ export const Friends = styled.div`
 export const Editor = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 60px 0px;
+  margin: 20px 0px;
+
   label {
     font-weight: bold;
+    font-size: 18px;
   }
   input {
-    width: 216px;
+    width: 80%;
+    height: 34px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
   }
   .content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 4px 0px;
+  }
+  .about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 4px 0px;
+    textarea {
+      width: 98%;
+      height: 100px;
+      background-color: #ffffff;
+      border: 1px solid #f4f4f4;
+      border-radius: 5px;
+    }
   }
 `;
 
 export const Appeal = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   p {
     color: #e0e0e0;
     font-size: xx-small;
-    margin: 0px 0px -10px 0px;
+    text-align: left;
+  }
+  .appeal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
   select {
     width: 56px;
@@ -109,27 +139,11 @@ export const Appeal = styled.div`
     font-size: xx-small;
     font-weight: bold;
     padding-left: 5px;
-    margin: 17px 4px;
   }
   .appealContent {
-    margin: 17px 4px;
     width: 130px;
-  }
-  .appealCkeck {
-    margin: 17px 4px;
-    display: none;
+    background-color: #ffffff;
+    border: 1px solid #f4f4f4;
+    border-radius: 5px;
   }
 `;
-
-//   input[type='checkbox'] {
-//     display: none;
-//   }
-//   input[type='checkbox'] {
-//     cursor: pointer;
-//     background-repeat: no-repeat;
-//     background-image: url('/checkIcon_unChecked.png');
-//   }
-//   input[type='checkbox']:checked {
-//     cursor: pointer;
-//     background-image: url('/checkIcon_checked.png');
-//   }

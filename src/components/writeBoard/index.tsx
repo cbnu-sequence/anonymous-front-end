@@ -9,10 +9,12 @@ import {
 } from './styles';
 
 export const WriteBoard = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isCheckedArray, setIsCheckedArray] = useState([false, false, false]);
 
-  const handleClick = () => {
-    setIsChecked(!isChecked);
+  const handleClick = (index: number) => {
+    const newIsCheckedArray = [...isCheckedArray];
+    newIsCheckedArray[index] = !newIsCheckedArray[index];
+    setIsCheckedArray(newIsCheckedArray);
   };
 
   return (
@@ -40,9 +42,9 @@ export const WriteBoard = () => {
           <label>제목</label>
           <input type="text" />
         </div>
-        <div className="content">
-          <label className="title">상세설명</label>
-          <input type="text" />
+        <div className="about">
+          <label>우리 팀 소개</label>
+          <textarea />
         </div>
       </Editor>
 
@@ -58,7 +60,16 @@ export const WriteBoard = () => {
             <option value="video">동영상</option>
           </select>
           <input className="appealContent" type="text" />
-          <input className="appealCkeck" type="checkbox" />
+          <img
+            key="1"
+            src={
+              isCheckedArray[0]
+                ? '/checkIcon_checked.png'
+                : '/checkIcon_unChecked.png'
+            }
+            id="checkIcon_0"
+            onClick={() => handleClick(0)}
+          ></img>
         </div>
 
         <div className="appeal">
@@ -70,7 +81,16 @@ export const WriteBoard = () => {
             <option value="video">동영상</option>
           </select>
           <input className="appealContent" type="text" />
-          <input className="appealCkeck" type="checkbox" />
+          <img
+            key="2"
+            src={
+              isCheckedArray[1]
+                ? '/checkIcon_checked.png'
+                : '/checkIcon_unChecked.png'
+            }
+            id="checkIcon_1"
+            onClick={() => handleClick(1)}
+          ></img>
         </div>
 
         <div className="appeal">
@@ -82,29 +102,18 @@ export const WriteBoard = () => {
             <option value="video">동영상</option>
           </select>
           <input className="appealContent" type="text" />
-          <input className="appealCkeck" type="checkbox" />
           <img
+            key="3"
             src={
-              isChecked ? '/checkIcon_checked.png' : '/checkIcon_unChecked.png'
+              isCheckedArray[2]
+                ? '/checkIcon_checked.png'
+                : '/checkIcon_unChecked.png'
             }
-            id="checkIcon"
-            onClick={handleClick}
+            id="checkIcon_2"
+            onClick={() => handleClick(2)}
           ></img>
         </div>
       </Appeal>
-
-      {/* <button
-          className={`ListBtn ${isChecked ? '' : 'lookbtn'}`}
-          onClick={onIsChecked}
-        >
-          전체 목록
-        </button>
-        <button
-          className={`ListBtn ${isChecked ? 'lookbtn' : ''}`}
-          onClick={onIsChecked}
-        >
-          완료 목록
-        </button> */}
     </WriteBoardBlock>
   );
 };
