@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { postMatchingPost } from '../../apis/MatchingPostApis';
+
 import {
   WriteBoardBlock,
   Editor,
@@ -9,7 +11,18 @@ import {
 } from './styles';
 
 export const WriteBoard = () => {
+  const [title, setTitle] = useState('');
+  const [introduce, setIntroduce] = useState('');
+  // const [appeal, setAppeal] = useState('');
+
   const [isCheckedArray, setIsCheckedArray] = useState([false, false, false]);
+
+  const handleSubmit = async () => {
+    postMatchingPost(title, introduce, 'appeal');
+    setTitle('');
+    setIntroduce('');
+    // setAppeal('');
+  };
 
   const handleClick = (index: number) => {
     const newIsCheckedArray = [...isCheckedArray];
@@ -22,7 +35,7 @@ export const WriteBoard = () => {
       <Title>
         <img src="/xButton.png" />
         <label className="writeBoardMent">새 게시글 작성</label>
-        <button>Create</button>
+        <button onClick={handleSubmit}>Create</button>
       </Title>
 
       <Input type="text" name="university" value="충북대학교" disabled />
@@ -34,17 +47,24 @@ export const WriteBoard = () => {
         <Friends className="friends">
           <label>친구</label>
           <div id="friends-list">
-            <div></div>
+            <div>친구를 추가해주세요.</div>
             <button>+</button>
           </div>
         </Friends>
         <div className="content">
           <label>제목</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
-        <div className="about">
+        <div className="introduce">
           <label>우리 팀 소개</label>
-          <textarea />
+          <textarea
+            value={introduce}
+            onChange={(e) => setIntroduce(e.target.value)}
+          />
         </div>
       </Editor>
 

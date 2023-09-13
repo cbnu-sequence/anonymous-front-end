@@ -6,8 +6,7 @@ export const WriteBoardBlock = styled.div`
   padding: 40px;
   color: #584744;
   button {
-    background-color: white;
-    padding: 0;
+    padding: 0px;
   }
   img {
     height: 27px;
@@ -69,6 +68,7 @@ export const Friends = styled.div`
     border: 1px solid #f4f4f4;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-radius: 5px;
   }
   button {
@@ -99,17 +99,15 @@ export const Editor = styled.div`
     align-items: center;
     margin: 4px 0px;
   }
-  .about {
+  .introduce {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin: 4px 0px;
     textarea {
-      width: 98%;
+      margin-top: 4px;
+      width: 93%;
       height: 100px;
-      background-color: #ffffff;
-      border: 1px solid #f4f4f4;
-      border-radius: 5px;
     }
   }
 `;
