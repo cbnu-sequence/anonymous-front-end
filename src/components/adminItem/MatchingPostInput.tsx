@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { postMatchingPost } from '../../apis/MatchingPostApis';
 
@@ -6,11 +5,13 @@ const MatchingPostInput = () => {
   const [title, setTitle] = useState('');
   const [introduce, setIntroduce] = useState('');
   const [appeal, setAppeal] = useState('');
+  const [appeals, setAppeals] = useState(['', '', '']);
 
   const handleSubmit = async () => {
-    postMatchingPost(title, introduce, appeal);
+    postMatchingPost(title, introduce, appeals);
     setTitle('');
     setIntroduce('');
+    setAppeals(['', '', '']);
     setAppeal('');
   };
 

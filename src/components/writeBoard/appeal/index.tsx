@@ -3,49 +3,28 @@ import Select from './Select';
 import { Text, AudioRecord, Image, Video } from './SelectItem';
 import { AppealBlock } from '../styles';
 
-const Appeal = ({ isCheckedArray, setIsCheckedArray }: any) => {
+const Appeal = ({
+  isCheckedArray,
+  setIsCheckedArray,
+  appeal,
+  setAppeal,
+  handleSubmit,
+}: any) => {
   const [selectedOptions, setSelectedOptions] = useState([
     'Text',
     'Text',
     'Text',
   ]);
-  const [selectedComponents, setSelectedComponents] = useState([
-    <Text />,
-    <Text />,
-    <Text />,
-  ]);
+
+  let selectedComponent = <Text appeal={appeal} setAppeal={setAppeal} />;
+
   const handleOptionChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
     index: number,
   ) => {
-    let selectedComponent = <Text />;
-
-    switch (event.target.value) {
-      case 'Text':
-        selectedComponent = <Text />;
-        break;
-      case 'Image':
-        selectedComponent = <Image />;
-        break;
-      case 'AudioRecord':
-        selectedComponent = <AudioRecord />;
-        break;
-      case 'Video':
-        selectedComponent = <Video />;
-        break;
-      default:
-        selectedComponent = <Text />;
-    }
-
     const newSelectedOptions = [...selectedOptions];
     newSelectedOptions[index] = event.target.value;
     setSelectedOptions(newSelectedOptions);
-
-    setSelectedComponents((prevComponents) => {
-      const newComponents = [...prevComponents];
-      newComponents[index] = selectedComponent;
-      return newComponents;
-    });
   };
   const handleClick = (index: number) => {
     const newIsCheckedArray = [...isCheckedArray];
@@ -67,7 +46,20 @@ const Appeal = ({ isCheckedArray, setIsCheckedArray }: any) => {
               ) => handleOptionChange(event, index)}
             />
           </div>
-          {selectedComponents[index]}
+          {selectedOptions[index] === 'Text' ? (
+            <Text
+              appeal={appeal}
+              setAppeal={setAppeal}
+              index={index}
+              isChecked={isChecked}
+            />
+          ) : selectedOptions[index] === 'Image' ? (
+            <Image />
+          ) : selectedOptions[index] === 'AudioRecord' ? (
+            <AudioRecord />
+          ) : (
+            <Video />
+          )}
           <img
             src={
               isChecked ? '/checkIcon_checked.png' : '/checkIcon_unChecked.png'

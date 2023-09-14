@@ -1,21 +1,21 @@
 import { useState } from 'react';
 import { postMatchingPost } from '../../apis/MatchingPostApis';
 import Appeal from './appeal';
-
+import { Text } from './appeal/SelectItem';
 import { WriteBoardBlock, Editor, Friends, Input, Title } from './styles';
 
 export const WriteBoard = () => {
   const [title, setTitle] = useState('');
   const [introduce, setIntroduce] = useState('');
-  // const [appeal, setAppeal] = useState('');
+  const [appeal, setAppeal] = useState(['', '', '']);
 
   const [isCheckedArray, setIsCheckedArray] = useState([false, false, false]);
 
   const handleSubmit = async () => {
-    postMatchingPost(title, introduce, 'appeal');
+    postMatchingPost(title, introduce, appeal);
     setTitle('');
     setIntroduce('');
-    // setAppeal('');
+    setAppeal(['', '', '']);
   };
 
   return (
@@ -56,8 +56,11 @@ export const WriteBoard = () => {
         </div>
       </Editor>
       <Appeal
+        appeal={appeal}
+        setAppeal={setAppeal}
         isCheckedArray={isCheckedArray}
         setIsCheckedArray={setIsCheckedArray}
+        handleSubmit={handleSubmit}
       />
     </WriteBoardBlock>
   );

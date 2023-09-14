@@ -21,7 +21,7 @@ export interface MatchingPost {
 export const postMatchingPost = async (
   title: string,
   introduce: string,
-  appeal: string,
+  appeal: string[],
 ) => {
   const { data } = await API.post(`/matching-posts`, {
     title,

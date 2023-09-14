@@ -1,8 +1,26 @@
-export const Text = () => {
+import { useEffect, useState } from 'react';
+
+export const Text = ({ appeal, setAppeal, index, isChecked }: any) => {
+  const [text, setText] = useState('');
+
+  //(e) => handleChange(e, index)
+
+  useEffect(() => {
+    setAppeal((Appeal: string[]) => {
+      const newAppeal = [...Appeal];
+      newAppeal[index] = text;
+      return newAppeal;
+    });
+  }, [isChecked]);
+
   return (
-    <>
-      <input className="appealContent" type="text" />
-    </>
+    <input
+      className="appealContent"
+      type="text"
+      value={text}
+      onSubmit={() => setText('')}
+      onChange={(e) => setText(e.target.value)}
+    />
   );
 };
 
