@@ -1,107 +1,68 @@
-import React, { useState } from 'react';
-import { Block, Editor, Select, Title, Appeal } from './AppStyles';
+import { useState } from 'react';
+import { postMatchingPost } from '../../apis/MatchingPostApis';
+import Appeal from './appeal';
+import { Text } from './appeal/SelectItem';
+import { WriteBoardBlock, Editor, Friends, Input, Title } from './styles';
 
 export const WriteBoard = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const [title, setTitle] = useState('');
+  const [introduce, setIntroduce] = useState('');
+  const [appeal, setAppeal] = useState(['', '', '']);
 
-  const handleChecked = () => {
-    document.getElementById('checkIcon').src = '/checkIcon_checked.png';
+  const [isCheckedArray, setIsCheckedArray] = useState([false, false, false]);
+
+  const handleSubmit = async () => {
+    postMatchingPost(title, introduce, appeal);
+    setTitle('');
+    setIntroduce('');
+    setAppeal(['', '', '']);
   };
 
   return (
-    <Block>
+    <WriteBoardBlock>
       <Title>
         <img src="/xButton.png" />
         <label className="writeBoardMent">새 게시글 작성</label>
-        <img src="/createButton.png" />
+        <button onClick={handleSubmit}>Create</button>
       </Title>
 
-      <Select>
-        <option value="university">충북대학교</option>
-        <option value="university">서울대학교</option>
-        <option value="university">연세대학교</option>
-        <option value="university">한양대학교</option>
-      </Select>
-      <Select>
-        <option value="department">정보통신공학부</option>
-        <option value="department">수학과</option>
-        <option value="department">국어국문학과</option>
-        <option value="department">심리학과</option>
-      </Select>
-      <Select>
-        <option value="gender">여자</option>
-        <option value="gender">남자</option>
-      </Select>
+      <Input type="text" name="university" value="충북대학교" disabled />
+      <Input type="text" name="department" value="정보통신공학부" disabled />
+      <Input type="text" name="class-of" value="20학번" disabled />
+      <Input type="text" name="gender" value="여자" disabled />
 
       <Editor>
+        <Friends className="friends">
+          <label>친구</label>
+          <div id="friends-list">
+            <div>친구를 추가해주세요.</div>
+            <button>+</button>
+          </div>
+        </Friends>
         <div className="content">
           <label>제목</label>
-          <input type="text" />
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </div>
-        <div className="content">
-          <label className="title">상세설명</label>
-          <input type="text" />
+        <div className="introduce">
+          <label>우리 팀 소개</label>
+          <textarea
+            value={introduce}
+            onChange={(e) => setIntroduce(e.target.value)}
+          />
         </div>
       </Editor>
-
-      <Appeal>
-        <p className="appealNotice">어필 1개 이상 작성은 필수입니다.</p>
-
-        <div className="appeal">
-          <label>어필1</label>
-          <select>
-            <option value="text">텍스트</option>
-            <option value="image">이미지</option>
-            <option value="voice">음성</option>
-            <option value="video">동영상</option>
-          </select>
-          <input className="appealContent" type="text" />
-          <input className="appealCkeck" type="checkbox" />
-        </div>
-
-        <div className="appeal">
-          <label>어필2</label>
-          <select>
-            <option value="text">텍스트</option>
-            <option value="image">이미지</option>
-            <option value="voice">음성</option>
-            <option value="video">동영상</option>
-          </select>
-          <input className="appealContent" type="text" />
-          <input className="appealCkeck" type="checkbox" />
-        </div>
-
-        <div className="appeal">
-          <label>어필3</label>
-          <select>
-            <option value="text">텍스트</option>
-            <option value="image">이미지</option>
-            <option value="voice">음성</option>
-            <option value="video">동영상</option>
-          </select>
-          <input className="appealContent" type="text" />
-          <input className="appealCkeck" type="checkbox" />
-          <img
-            src="/checkIcon_unChecked.png"
-            id="checkIcon"
-            onClick={handleChecked}
-          ></img>
-        </div>
-      </Appeal>
-
-      {/* <button
-          className={`ListBtn ${isChecked ? '' : 'lookbtn'}`}
-          onClick={onIsChecked}
-        >
-          전체 목록
-        </button>
-        <button
-          className={`ListBtn ${isChecked ? 'lookbtn' : ''}`}
-          onClick={onIsChecked}
-        >
-          완료 목록
-        </button> */}
-    </Block>
+      <Appeal
+        appeal={appeal}
+        setAppeal={setAppeal}
+        isCheckedArray={isCheckedArray}
+        setIsCheckedArray={setIsCheckedArray}
+        handleSubmit={handleSubmit}
+      />
+    </WriteBoardBlock>
   );
 };
 

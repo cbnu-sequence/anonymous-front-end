@@ -1,21 +1,23 @@
 import styled from '@emotion/styled';
 
-export const Block = styled.div`
+export const WriteBoardBlock = styled.div`
+  width: 300px;
+  background-color: white;
+  padding: 40px;
+  color: #584744;
+  button {
+    padding: 0px;
+  }
   img {
-    height: 33px;
+    height: 27px;
   }
   label {
     font-weight: bold;
   }
   input[type='text'] {
-    background-color: #fbfbfb;
-    border: none;
+    border: 1px solid #f4f4f4;
     outline: none;
   }
-  background-color: white;
-  padding: 40px;
-  color: #584744;
-
   .ListBtn {
     width: 30px;
     height: 30px;
@@ -37,49 +39,104 @@ export const Title = styled.div`
     margin-right: 70px;
     font-size: large;
   }
+  button {
+    color: #74e28c;
+    font-weight: 600;
+    font-size: 18px;
+  }
 `;
 
-export const Select = styled.select`
-  display: block;
-  width: 310px;
-  height: 52px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
+export const Input = styled.input`
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  height: 33px;
   background-color: #fbfbfb;
-  appearance: none;
-  font-size: large;
-  padding-left: 25px;
-  margin: 12px 0px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 7px;
+  color: #584744;
+`;
+export const Friends = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4px 0px;
+
+  #friends-list {
+    padding: 0 5px;
+    width: 80%;
+    height: 34px;
+    border: 1px solid #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+  }
+  button {
+    font-size: 27px;
+    color: #584744;
+  }
 `;
 
 export const Editor = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 60px 0px;
+  margin: 20px 0px;
+
   label {
     font-weight: bold;
+    font-size: 18px;
   }
   input {
-    width: 216px;
+    width: 80%;
+    height: 34px;
+    padding: 0 5px;
+    border-radius: 5px;
+    background-color: #ffffff;
   }
   .content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 4px 0px;
+  }
+  .introduce {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 4px 0px;
+    textarea {
+      margin-top: 4px;
+      width: 93%;
+      height: 100px;
+    }
   }
 `;
 
-export const Appeal = styled.div`
+export const AppealBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  .appealType {
+    display: flex;
+    align-items: center;
+  }
   p {
     color: #e0e0e0;
     font-size: xx-small;
-    margin: 0px 0px -10px 0px;
+    text-align: left;
+  }
+  label {
+    margin-right: 7px;
+  }
+  .appeal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
   select {
     width: 56px;
-    height: 26px;
+    height: 23px;
     border-radius: 10px;
     border: none;
     background-color: #584744;
@@ -87,27 +144,11 @@ export const Appeal = styled.div`
     font-size: xx-small;
     font-weight: bold;
     padding-left: 5px;
-    margin: 17px 4px;
   }
   .appealContent {
-    margin: 17px 4px;
     width: 130px;
-  }
-  .appealCkeck {
-    margin: 17px 4px;
-    display: none;
+    background-color: #ffffff;
+    border: 1px solid #f4f4f4;
+    border-radius: 5px;
   }
 `;
-
-//   input[type='checkbox'] {
-//     display: none;
-//   }
-//   input[type='checkbox'] {
-//     cursor: pointer;
-//     background-repeat: no-repeat;
-//     background-image: url('/checkIcon_unChecked.png');
-//   }
-//   input[type='checkbox']:checked {
-//     cursor: pointer;
-//     background-image: url('/checkIcon_checked.png');
-//   }
