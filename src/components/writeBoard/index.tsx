@@ -1,14 +1,8 @@
 import { useState } from 'react';
 import { postMatchingPost } from '../../apis/MatchingPostApis';
+import Appeal from './appeal';
 
-import {
-  WriteBoardBlock,
-  Editor,
-  Friends,
-  Input,
-  Title,
-  Appeal,
-} from './styles';
+import { WriteBoardBlock, Editor, Friends, Input, Title } from './styles';
 
 export const WriteBoard = () => {
   const [title, setTitle] = useState('');
@@ -22,12 +16,6 @@ export const WriteBoard = () => {
     setTitle('');
     setIntroduce('');
     // setAppeal('');
-  };
-
-  const handleClick = (index: number) => {
-    const newIsCheckedArray = [...isCheckedArray];
-    newIsCheckedArray[index] = !newIsCheckedArray[index];
-    setIsCheckedArray(newIsCheckedArray);
   };
 
   return (
@@ -67,73 +55,10 @@ export const WriteBoard = () => {
           />
         </div>
       </Editor>
-
-      <Appeal>
-        <p className="appealNotice">어필 1개 이상 작성은 필수입니다.</p>
-
-        <div className="appeal">
-          <label>어필1</label>
-          <select>
-            <option value="text">텍스트</option>
-            <option value="image">이미지</option>
-            <option value="voice">음성</option>
-            <option value="video">동영상</option>
-          </select>
-          <input className="appealContent" type="text" />
-          <img
-            key="1"
-            src={
-              isCheckedArray[0]
-                ? '/checkIcon_checked.png'
-                : '/checkIcon_unChecked.png'
-            }
-            id="checkIcon_0"
-            onClick={() => handleClick(0)}
-          ></img>
-        </div>
-
-        <div className="appeal">
-          <label>어필2</label>
-          <select>
-            <option value="text">텍스트</option>
-            <option value="image">이미지</option>
-            <option value="voice">음성</option>
-            <option value="video">동영상</option>
-          </select>
-          <input className="appealContent" type="text" />
-          <img
-            key="2"
-            src={
-              isCheckedArray[1]
-                ? '/checkIcon_checked.png'
-                : '/checkIcon_unChecked.png'
-            }
-            id="checkIcon_1"
-            onClick={() => handleClick(1)}
-          ></img>
-        </div>
-
-        <div className="appeal">
-          <label>어필3</label>
-          <select>
-            <option value="text">텍스트</option>
-            <option value="image">이미지</option>
-            <option value="voice">음성</option>
-            <option value="video">동영상</option>
-          </select>
-          <input className="appealContent" type="text" />
-          <img
-            key="3"
-            src={
-              isCheckedArray[2]
-                ? '/checkIcon_checked.png'
-                : '/checkIcon_unChecked.png'
-            }
-            id="checkIcon_2"
-            onClick={() => handleClick(2)}
-          ></img>
-        </div>
-      </Appeal>
+      <Appeal
+        isCheckedArray={isCheckedArray}
+        setIsCheckedArray={setIsCheckedArray}
+      />
     </WriteBoardBlock>
   );
 };

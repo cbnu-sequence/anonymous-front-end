@@ -112,14 +112,21 @@ export const Editor = styled.div`
   }
 `;
 
-export const Appeal = styled.div`
+export const AppealBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  .appealType {
+    display: flex;
+    align-items: center;
+  }
   p {
     color: #e0e0e0;
     font-size: xx-small;
     text-align: left;
+  }
+  label {
+    margin-right: 7px;
   }
   .appeal {
     display: flex;
@@ -129,7 +136,7 @@ export const Appeal = styled.div`
   }
   select {
     width: 56px;
-    height: 26px;
+    height: 23px;
     border-radius: 10px;
     border: none;
     background-color: #584744;
