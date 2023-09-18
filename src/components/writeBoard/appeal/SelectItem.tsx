@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 
-export const Text = ({ appeal, setAppeal, index, isChecked }: any) => {
+export const Text = ({ setAppeal, index, isChecked }: any) => {
   const [text, setText] = useState('');
-
-  //(e) => handleChange(e, index)
 
   useEffect(() => {
     setAppeal((Appeal: string[]) => {
