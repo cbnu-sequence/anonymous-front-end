@@ -11,7 +11,7 @@ export interface MatchingPost {
   id: number;
   title: string;
   introduce: string;
-  appeal: string;
+  appeal: string[];
   status: 'RECRUIT' | 'ADMIN';
   createdAt: string;
   updateAt: string;
@@ -69,5 +69,5 @@ export const PostInvitations = async (postId: string, userId: string) => {
   const { data } = await API.post(
     `/matching-posts/${postId}/users/${userId}/invitations`,
   );
-  console.log('튿정 유저 초대', data);
+  console.log('특정 유저 초대', data);
 };

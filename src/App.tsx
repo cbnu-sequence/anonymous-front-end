@@ -2,6 +2,7 @@ import { RecoilRoot } from 'recoil';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Admin from './pages/Admin';
 import DirectMatching from './pages/DirectMatching';
+import DirectMatchingList from './pages/DirectMatchingList';
 import './App.css';
 
 function App() {
@@ -12,7 +13,8 @@ function App() {
           <Routes>
             <Route path="/" element={<>home</>} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="/match/direct" element={<DirectMatching />} />
+            <Route path="/match/direct/write" element={<DirectMatching />} />
+            <Route path="/match/direct" element={<DirectMatchingList />} />
           </Routes>
         </BrowserRouter>
       </RecoilRoot>
