@@ -16,11 +16,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #584744;
+
   text-decoration: inherit;
 }
-a:hover {
-  color: #535bf2;
+a:active {
+  opacity: 0.7;
 }
 
 body {
@@ -65,7 +66,7 @@ textarea:focus {
     background-color: #213547;
   }
   a:hover {
-    color: #747bff;
+    color: #584744;
   }
   button {
     background-color: #ffffff;

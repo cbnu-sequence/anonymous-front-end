@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 import { css } from '@emotion/react';
 
 export const Container = styled.div`
@@ -23,7 +24,12 @@ export const ListDiv = styled.div`
   border-radius: 20px;
   box-shadow: 0 -5px 5px rgba(0, 0, 0, 0.1);
 `;
-export const ListItemDiv = styled.div`
+
+export const PostDiv = styled(ListDiv)`
+  height: 610px;
+`;
+
+export const ListItemLink = styled(Link)`
   h3 {
     text-align: left;
     font-weight: 300;
