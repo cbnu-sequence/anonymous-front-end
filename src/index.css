@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light;
-  color: #213547;
+  color: #584744;
   background-color: #ffffff;
 
   font-synthesis: none;
@@ -62,7 +62,6 @@ textarea:focus {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color: #ffffff;
     background-color: #213547;
   }
   a:hover {
