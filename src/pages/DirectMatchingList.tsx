@@ -1,56 +1,51 @@
+import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Filter } from '../components/matchingList/Filter';
-import { List } from '../components/matchingList/List';
-import { Container, ListDiv } from '../components/matchingList/styles';
+import MatchingListSortingFilter from '../components/matchingList/MatchingListSortingedFilter';
+import MatchingList from '../components/matchingList/MatchingList';
+import { StyledContainer, ListDiv } from '../components/matchingList/styles';
 import { MatchingPost, getMatchingPostAll } from '../apis/MatchingPostApis';
+import { useReadMatchingPosts } from '../services/MatchingPostServices';
 
 const DirectMatchingList = () => {
-  const [sortedByDistance, setSortedByDistance] = useState(true);
-  const [sortedByRegistrationDate, setSortedByRegistrationDate] =
+  const [isSortedByDistance, setIsSortedByDistance] = useState(true);
+  const [isSortedByRegistrationDate, setIsSortedByRegistrationDate] =
     useState(false);
 
   const handleSortedBy = (sortBy: 'distance' | 'registrationDate') => {
+    if (sortBy !== 'distance' && sortBy !== 'registrationDate') return;
     if (sortBy === 'distance') {
-      setSortedByDistance(true);
-      setSortedByRegistrationDate(false);
+      setIsSortedByDistance(true);
+      setIsSortedByRegistrationDate(false);
+      return;
       // distance에 따른 정렬 API 호출
-    } else if (sortBy === 'registrationDate') {
-      setSortedByDistance(false);
-      setSortedByRegistrationDate(true);
-      // registrationDate에 따른 정렬 API 호출
     }
+    setIsSortedByDistance(false);
+    setIsSortedByRegistrationDate(true);
+    // registrationDate에 따른 정렬 API 호출
   };
 
   // 리스트 아이템: 날짜, 학교, 학번, 제목, 해시태그, 매칭완료여부
   // const [title, setTitle] = useState('');
   // const [date, setDate] = useState('');
 
-  const [posts, setPosts] = useState<MatchingPost[]>([]);
+  const { data: matchingPosts, isLoading } = useReadMatchingPosts();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getMatchingPostAll();
-      if (data) {
-        setPosts(data);
-      }
-    };
-
-    fetchData();
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
-      <Container>
+      <StyledContainer>
         <ListDiv>
-          <Filter
-            sortedByDistance={sortedByDistance}
-            sortedByRegistrationDate={sortedByRegistrationDate}
+          <MatchingListSortingFilter
+            isSortedByDistance={isSortedByDistance}
+            isSortedByRegistrationDate={isSortedByRegistrationDate}
             handleSortedBy={handleSortedBy}
           />
-          <List posts={posts} setPosts={setPosts} />
+          {matchingPosts && <MatchingList posts={matchingPosts} />}
         </ListDiv>
-      </Container>
+      </StyledContainer>
     </>
   );
 };
+
 export default DirectMatchingList;

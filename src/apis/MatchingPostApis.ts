@@ -47,7 +47,7 @@ export const getMatchingPostOne = async (id: number) => {
 export const PatchMatchingPost = async (
   title: string,
   introduce: string,
-  appeal: string,
+  appeal: string[],
 ) => {
   const { data } = await API.patch(`/matching-posts`, {
     title,
@@ -69,5 +69,5 @@ export const PostInvitations = async (postId: string, userId: string) => {
   const { data } = await API.post(
     `/matching-posts/${postId}/users/${userId}/invitations`,
   );
-  console.log('특정 유저 초대', data);
+  // console.log('특정 유저 초대', data);
 };

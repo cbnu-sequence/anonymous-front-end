@@ -1,46 +1,39 @@
+import styled from '@emotion/styled';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { MatchingPost, getMatchingPostOne } from '../apis/MatchingPostApis';
-import { Container, PostDiv } from '../components/matchingList/styles';
+import { StyledContainer, PostDiv } from '../components/matchingList/styles';
+import { useReadMatchingPost } from '../services/MatchingPostServices';
 const DirectMatchingPost = () => {
   const { postId } = useParams();
-  const [post, setPost] = useState<MatchingPost | null>(null);
 
-  useEffect(() => {
-    const fatchData = async () => {
-      console.log(postId);
-      const data = await getMatchingPostOne(Number(postId));
-      if (data) {
-        setPost(data);
-      }
-      console.log('gg', post);
-    };
-    fatchData();
-  }, [postId]);
+  const { data: matchingPost, isLoading } = useReadMatchingPost(Number(postId));
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
-    <Container>
+    <StyledContainer>
       <PostDiv>
-        {post && (
+        {matchingPost && (
           <div>
             <div>
               <div>
-                <span>{post.createdAt.slice(0, 10)}</span>
+                <span>{matchingPost.createdAt.slice(0, 10)}</span>
                 <span>(학교) (학번)</span>
               </div>
               <div>(매칭완료여부)</div>
             </div>
-            <h3>{post.title}</h3>
-            <p>{post.introduce}</p>
+            <h3>{matchingPost.title}</h3>
+            <p>{matchingPost.introduce}</p>
             <div>
               어필 보기
-              <div>{post.appeal}</div>
+              <div>{matchingPost.appeal}</div>
             </div>
             <button>채팅 해보기</button>
           </div>
         )}
       </PostDiv>
-    </Container>
+    </StyledContainer>
   );
 };
 export default DirectMatchingPost;
