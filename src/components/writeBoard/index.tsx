@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { postMatchingPost } from '../../apis/MatchingPostApis';
 import Appeal from './appeal';
-import { Text } from './appeal/SelectItem';
 import { WriteBoardBlock, Editor, Friends, Input, Title } from './styles';
 
 export const WriteBoard = () => {
@@ -16,6 +15,7 @@ export const WriteBoard = () => {
     setTitle('');
     setIntroduce('');
     setAppeal(['', '', '']);
+    setIsCheckedArray([false, false, false]);
   };
 
   return (
@@ -56,7 +56,6 @@ export const WriteBoard = () => {
         </div>
       </Editor>
       <Appeal
-        appeal={appeal}
         setAppeal={setAppeal}
         isCheckedArray={isCheckedArray}
         setIsCheckedArray={setIsCheckedArray}

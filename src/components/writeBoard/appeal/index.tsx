@@ -3,20 +3,23 @@ import Select from './Select';
 import { Text, AudioRecord, Image, Video } from './SelectItem';
 import { AppealBlock } from '../styles';
 
-const Appeal = ({
-  isCheckedArray,
-  setIsCheckedArray,
-  appeal,
-  setAppeal,
-  handleSubmit,
-}: any) => {
+const Appeal = ({ isCheckedArray, setIsCheckedArray, setAppeal }: any) => {
   const [selectedOptions, setSelectedOptions] = useState([
     'Text',
     'Text',
     'Text',
   ]);
 
-  let selectedComponent = <Text appeal={appeal} setAppeal={setAppeal} />;
+  const optionComponents = (index: number, isChecked: boolean) => {
+    const components: Record<string, JSX.Element> = {
+      Text: <Text setAppeal={setAppeal} index={index} isChecked={isChecked} />,
+      Image: <Image />,
+      AudioRecord: <AudioRecord />,
+      Video: <Video />,
+    };
+
+    return components[selectedOptions[index]] || <Text />;
+  };
 
   const handleOptionChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -46,20 +49,7 @@ const Appeal = ({
               ) => handleOptionChange(event, index)}
             />
           </div>
-          {selectedOptions[index] === 'Text' ? (
-            <Text
-              appeal={appeal}
-              setAppeal={setAppeal}
-              index={index}
-              isChecked={isChecked}
-            />
-          ) : selectedOptions[index] === 'Image' ? (
-            <Image />
-          ) : selectedOptions[index] === 'AudioRecord' ? (
-            <AudioRecord />
-          ) : (
-            <Video />
-          )}
+          {optionComponents(index, isChecked)}
           <img
             src={
               isChecked ? '/checkIcon_checked.png' : '/checkIcon_unChecked.png'

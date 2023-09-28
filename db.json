@@ -17,56 +17,6 @@
       "status": "RECRUIT",
       "createdAt": "2023-08-23 18:42:07.886633",
       "updatedAt": "2023-08-23 20:42:07.886633"
-    },
-    {
-      "title": "lk",
-      "introduce": "oi",
-      "appeal": [
-        "",
-        "",
-        ""
-      ],
-      "id": 3
-    },
-    {
-      "title": "ff",
-      "introduce": "fefe",
-      "appeal": [
-        "efefef",
-        "",
-        ""
-      ],
-      "id": 4
-    },
-    {
-      "title": "wd",
-      "introduce": "wdwd",
-      "appeal": [
-        "",
-        "",
-        ""
-      ],
-      "id": 5
-    },
-    {
-      "title": "sd",
-      "introduce": "sd",
-      "appeal": [
-        "",
-        "",
-        ""
-      ],
-      "id": 6
-    },
-    {
-      "title": "df",
-      "introduce": "sdsd",
-      "appeal": [
-        "sdsd",
-        "",
-        ""
-      ],
-      "id": 7
     }
   ]
 }
