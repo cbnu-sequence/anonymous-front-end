@@ -60,7 +60,6 @@ export const PatchMatchingPost = async (
 // 매칭 포스트 삭제 delete
 export const deleteMatchingPost = async (id: number) => {
   const { data } = await API.delete(`/matching-posts/${id}`);
-  // alert(data.title + ' 삭제');
   // 백엔드 response 확인 필요
 };
 

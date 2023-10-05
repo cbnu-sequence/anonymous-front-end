@@ -13,7 +13,7 @@ const MatchingListSortingFilter: React.FC<TProps> = ({
   handleSortedBy,
 }) => {
   return (
-    <StyledWrrapper>
+    <StyledWrapper>
       <StyledButton
         isActive={isSortedByDistance}
         onClick={() => handleSortedBy('distance')}
@@ -26,11 +26,11 @@ const MatchingListSortingFilter: React.FC<TProps> = ({
       >
         최근 등록 순
       </StyledButton>
-    </StyledWrrapper>
+    </StyledWrapper>
   );
 };
 
-const StyledWrrapper = styled.div`
+const StyledWrapper = styled.div`
   width: 147px;
   height: 50px;
   display: flex;

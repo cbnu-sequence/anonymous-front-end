@@ -91,11 +91,11 @@ export const useUpdateMatchingPost = () => {
 };
 
 // 매칭 포스트 삭제
-export const useDeleteMatchingPost = () => {
+export const useDeleteMatchingPost = (postId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation(
-    (postId: number) => {
+    () => {
       return deleteMatchingPost(postId);
     },
     {
