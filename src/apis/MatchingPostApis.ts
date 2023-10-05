@@ -45,11 +45,12 @@ export const getMatchingPostOne = async (id: number) => {
 
 // 매칭 포스트 수정 patch
 export const PatchMatchingPost = async (
+  id: number,
   title: string,
   introduce: string,
   appeal: string[],
 ) => {
-  const { data } = await API.patch(`/matching-posts`, {
+  const { data } = await API.patch(`/matching-posts/${id}`, {
     title,
     introduce,
     appeal,

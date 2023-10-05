@@ -76,6 +76,7 @@ export const useUpdateMatchingPost = () => {
   return useMutation(
     (updatedPostData: MatchingPost) => {
       return PatchMatchingPost(
+        updatedPostData.id,
         updatedPostData.title,
         updatedPostData.introduce,
         updatedPostData.appeal,

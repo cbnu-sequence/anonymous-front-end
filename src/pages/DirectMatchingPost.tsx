@@ -12,12 +12,8 @@ const DirectMatchingPost = () => {
   const { postId } = useParams();
 
   const { data: matchingPost, isLoading } = useReadMatchingPost(Number(postId));
-  const deleteMutation = useDeleteMatchingPost(Number(postId));
 
   if (isLoading) return <div>Loading...</div>;
-  const handleDeleteButton = () => {
-    deleteMutation.mutate();
-  };
 
   return (
     <StyledContainer>
@@ -37,7 +33,7 @@ const DirectMatchingPost = () => {
               어필 보기
               <div>{matchingPost.appeal}</div>
             </div>
-            <PostButtons handleDeleteButton={handleDeleteButton} />
+            <PostButtons postId={postId} />
             <button>채팅 해보기</button>
           </div>
         )}

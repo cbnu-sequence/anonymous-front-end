@@ -1,14 +1,21 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { useDeleteMatchingPost } from '../../services/MatchingPostServices';
 
 type TProps = {
-  handleDeleteButton: () => void;
+  postId: string | undefined;
 };
 
-const PostButtons: React.FC<TProps> = ({ handleDeleteButton }) => {
+const PostButtons: React.FC<TProps> = ({ postId }) => {
+  const deleteMutation = useDeleteMatchingPost(Number(postId));
+
+  const handleDeleteButton = () => {
+    deleteMutation.mutate();
+  };
+
   return (
     <StyledWrapper>
-      <Link to="/">
+      <Link to={`/match/direct/edit/${postId}`}>
         <button>수정</button>
       </Link>
       <Link to="/match/direct">
