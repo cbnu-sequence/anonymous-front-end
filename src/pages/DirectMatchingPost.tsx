@@ -1,13 +1,11 @@
 import styled from '@emotion/styled';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { MatchingPost, getMatchingPostOne } from '../apis/MatchingPostApis';
-import { StyledContainer, PostDiv } from '../components/matchingList/styles';
-import {
-  useDeleteMatchingPost,
-  useReadMatchingPost,
-} from '../services/MatchingPostServices';
-import PostButtons from '../components/matchingList/PostButtons';
+import { Link, useParams } from 'react-router-dom';
+import { PostDiv } from '../components/matchingList/styles';
+import { GreenContainer } from '../components/styledContainer';
+import { useReadMatchingPost } from '../services/MatchingPostServices';
+import PostActions from '../components/matchingList/PostActions';
+import AppealTabs from '../components/matchingList/AppealTabs';
+
 const DirectMatchingPost = () => {
   const { postId } = useParams();
 
@@ -16,29 +14,59 @@ const DirectMatchingPost = () => {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <StyledContainer>
+    <GreenContainer>
       <PostDiv>
         {matchingPost && (
-          <div>
-            <div>
+          <StyledWrapper>
+            <CreateInfo>
               <div>
                 <span>{matchingPost.createdAt.slice(0, 10)}</span>
                 <span>(학교) (학번)</span>
               </div>
-              <div>(매칭완료여부)</div>
-            </div>
+              <div>
+                <div>(매칭완료여부)</div>
+                <PostActions postId={postId} />
+              </div>
+            </CreateInfo>
             <h3>{matchingPost.title}</h3>
             <p>{matchingPost.introduce}</p>
-            <div>
-              어필 보기
-              <div>{matchingPost.appeal}</div>
-            </div>
-            <PostButtons postId={postId} />
-            <button>채팅 해보기</button>
-          </div>
+            <AppealDiv>
+              <p>어필 보기</p>
+              <AppealTabs appealArr={matchingPost.appeal} />
+            </AppealDiv>
+            <Link to={`/match/direct/${postId}/request-chat`}>
+              <StyledButton>채팅 해보기</StyledButton>
+            </Link>
+          </StyledWrapper>
         )}
       </PostDiv>
-    </StyledContainer>
+    </GreenContainer>
   );
 };
+
+const StyledWrapper = styled.div`
+  h3 {
+    margin-left: 5px;
+    margin-top: 0;
+    text-align: left;
+  }
+  p {
+    text-align: left;
+  }
+`;
+const CreateInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+const AppealDiv = styled.div`
+  p {
+    margin-top: 45px;
+  }
+`;
+
+const StyledButton = styled.button`
+  background-color: #74e28c;
+  width: 100%;
+  color: #ffffff;
+`;
 export default DirectMatchingPost;

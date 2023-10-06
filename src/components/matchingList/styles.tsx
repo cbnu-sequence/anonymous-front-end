@@ -1,12 +1,5 @@
 import styled from '@emotion/styled';
 
-export const StyledContainer = styled.div`
-  position: relative;
-  width: 380px;
-  height: 760px;
-  background-color: #74e28c;
-`;
-
 export const ListDiv = styled.div`
   position: absolute;
   padding: 25px;

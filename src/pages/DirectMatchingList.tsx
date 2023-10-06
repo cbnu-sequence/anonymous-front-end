@@ -1,10 +1,9 @@
-import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import MatchingListSortingFilter from '../components/matchingList/MatchingListSortingedFilter';
 import MatchingList from '../components/matchingList/MatchingList';
-import { StyledContainer, ListDiv } from '../components/matchingList/styles';
-import { MatchingPost, getMatchingPostAll } from '../apis/MatchingPostApis';
+import { ListDiv } from '../components/matchingList/styles';
 import { useReadMatchingPosts } from '../services/MatchingPostServices';
+import { GreenContainer } from '../components/styledContainer';
 
 const DirectMatchingList = () => {
   const [isSortedByDistance, setIsSortedByDistance] = useState(true);
@@ -34,7 +33,7 @@ const DirectMatchingList = () => {
 
   return (
     <>
-      <StyledContainer>
+      <GreenContainer>
         <ListDiv>
           <MatchingListSortingFilter
             isSortedByDistance={isSortedByDistance}
@@ -43,7 +42,7 @@ const DirectMatchingList = () => {
           />
           {matchingPosts && <MatchingList posts={matchingPosts} />}
         </ListDiv>
-      </StyledContainer>
+      </GreenContainer>
     </>
   );
 };

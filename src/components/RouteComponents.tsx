@@ -4,6 +4,8 @@ import DirectMatching from '../pages/DirectMatching';
 import DirectMatchingList from '../pages/DirectMatchingList';
 import DirectMatchingPost from '../pages/DirectMatchingPost';
 import DirectMatchingEdit from '../pages/DirectMatchingEdit';
+import Chat from '../pages/Chat';
+import DirectRequestChat from '../pages/DirectRequstchat';
 const RouteComponents = () => {
   return (
     <BrowserRouter>
@@ -20,6 +22,11 @@ const RouteComponents = () => {
           path={`/match/direct/edit/:editId`}
           element={<DirectMatchingEdit />}
         />
+        <Route
+          path="//match/direct/:postId/request-chat"
+          element={<DirectRequestChat />}
+        />
+        <Route path="/chat" element={<Chat />} />
       </Routes>
     </BrowserRouter>
   );

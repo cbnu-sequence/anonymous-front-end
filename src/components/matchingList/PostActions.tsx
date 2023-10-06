@@ -6,7 +6,7 @@ type TProps = {
   postId: string | undefined;
 };
 
-const PostButtons: React.FC<TProps> = ({ postId }) => {
+const PostActions: React.FC<TProps> = ({ postId }) => {
   const deleteMutation = useDeleteMatchingPost(Number(postId));
 
   const handleDeleteButton = () => {
@@ -27,10 +27,11 @@ const PostButtons: React.FC<TProps> = ({ postId }) => {
 
 const StyledWrapper = styled.div`
   display: flex;
+  margin: 20px 0 0 10px;
   button {
     font-size: 12px;
     padding: 5px 7px;
     color: gray;
   }
 `;
-export default PostButtons;
+export default PostActions;
