@@ -40,28 +40,6 @@ export const useCreateMatchingPost = () => {
   );
 };
 
-/*
-  export const useCreateMatchingPost = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation<
-    void,
-    unknown,
-    { title: string; introduce: string; appeal: string[] }
-  >(
-    ({ title, introduce, appeal }) => {
-      return postMatchingPost(title, introduce, appeal);
-    },
-    {
-      onSuccess: () => {
-        // 새로운 포스트가 생성된 후 매칭 포스트 쿼리를 무효화하고 다시 가져옵니다.
-        queryClient.invalidateQueries('matchingPosts');
-      },
-    },
-  );
-};
-*/
-
 // ID를 사용하여 단일 매칭 포스트 가져오기
 export const useReadMatchingPost = (id: number) => {
   return useQuery<MatchingPost>(['matchingPost', id], () =>
@@ -76,6 +54,7 @@ export const useUpdateMatchingPost = () => {
   return useMutation(
     (updatedPostData: MatchingPost) => {
       return PatchMatchingPost(
+        updatedPostData.id,
         updatedPostData.title,
         updatedPostData.introduce,
         updatedPostData.appeal,
@@ -91,11 +70,11 @@ export const useUpdateMatchingPost = () => {
 };
 
 // 매칭 포스트 삭제
-export const useDeleteMatchingPost = () => {
+export const useDeleteMatchingPost = (postId: number) => {
   const queryClient = useQueryClient();
 
   return useMutation(
-    (postId: number) => {
+    () => {
       return deleteMatchingPost(postId);
     },
     {

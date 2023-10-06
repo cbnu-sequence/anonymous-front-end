@@ -4,16 +4,24 @@
       "id": 1,
       "title": "1title",
       "introduce": "Some Introduce",
-      "appeal": "Some Appeal",
+      "appeal": [
+        "Some Appeal",
+        "",
+        ""
+      ],
       "status": "RECRUIT",
       "createdAt": "2023-08-23 18:42:07.886633",
       "updatedAt": "2023-08-23 20:42:07.886633"
     },
     {
-      "id": 2,
-      "title": "2title",
-      "introduce": "Some Introduce",
-      "appeal": "Some Appeal",
+      "id": 3,
+      "title": "과팅해여~",
+      "introduce": "안녕하세용 ㅎㅎㅎ",
+      "appeal": [
+        "어필1",
+        "22",
+        "333"
+      ],
       "status": "RECRUIT",
       "createdAt": "2023-08-23 18:42:07.886633",
       "updatedAt": "2023-08-23 20:42:07.886633"

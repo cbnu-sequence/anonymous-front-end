@@ -3,7 +3,12 @@ import Select from './Select';
 import { Text, AudioRecord, Image, Video } from './SelectItem';
 import { AppealBlock } from '../styles';
 
-const Appeal = ({ isCheckedArray, setIsCheckedArray, setAppeal }: any) => {
+const Appeal = ({
+  isCheckedArray,
+  setIsCheckedArray,
+  setAppeal,
+  appeal,
+}: any) => {
   const [selectedOptions, setSelectedOptions] = useState([
     'Text',
     'Text',
@@ -12,7 +17,14 @@ const Appeal = ({ isCheckedArray, setIsCheckedArray, setAppeal }: any) => {
 
   const optionComponents = (index: number, isChecked: boolean) => {
     const components: Record<string, JSX.Element> = {
-      Text: <Text setAppeal={setAppeal} index={index} isChecked={isChecked} />,
+      Text: (
+        <Text
+          appeal={appeal}
+          setAppeal={setAppeal}
+          index={index}
+          isChecked={isChecked}
+        />
+      ),
       Image: <Image />,
       AudioRecord: <AudioRecord />,
       Video: <Video />,
